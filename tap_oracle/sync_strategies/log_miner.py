@@ -121,8 +121,8 @@ def sync_tables(conn_config, streams, state, end_scn, scn_window_size = None):
    cur = connection.cursor()
    cur.arraysize = BATCH_SIZE
    cur.execute("ALTER SESSION SET TIME_ZONE = 'Pacific/Auckland'")
-   cur.execute("""ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD"T"HH24:MI:SS."00+00:00"'""")
-   cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD"T"HH24:MI:SSXFF"+00:00"'""")
+   cur.execute("""ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD"T"HH24:MI:SS."00"'""")
+   cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD"T"HH24:MI:SSXFF""'""")
    cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT  = 'YYYY-MM-DD"T"HH24:MI:SS.FFTZH:TZM'""")
 
    start_scn_window = min([get_bookmark(state, s.tap_stream_id, 'scn') for s in streams])
@@ -158,8 +158,8 @@ def sync_tables(conn_config, streams, state, end_scn, scn_window_size = None):
                 connection.call_timeout = CALL_TIMEOUT
             cur = connection.cursor()
             cur.execute("ALTER SESSION SET TIME_ZONE = 'Pacific/Auckland'")
-            cur.execute("""ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD"T"HH24:MI:SS."00+00:00"'""")
-            cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD"T"HH24:MI:SSXFF"+00:00"'""")
+            cur.execute("""ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD"T"HH24:MI:SS."00"'""")
+            cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD"T"HH24:MI:SSXFF""'""")
             cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT  = 'YYYY-MM-DD"T"HH24:MI:SS.FFTZH:TZM'""")
             continue
          else:
