@@ -26,7 +26,7 @@ def sync_view(conn_config, stream, state, desired_columns):
 
    cur = connection.cursor()
    cur.arraysize = BATCH_SIZE
-   cur.execute("ALTER SESSION SET TIME_ZONE = '00:00'")
+   cur.execute("ALTER SESSION SET TIME_ZONE = 'Pacific/Auckland'")
    cur.execute("""ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD"T"HH24:MI:SS."00+00:00"'""")
    cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD"T"HH24:MI:SSXFF"+00:00"'""")
    cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT  = 'YYYY-MM-DD"T"HH24:MI:SS.FFTZH:TZM'""")
@@ -84,7 +84,7 @@ def sync_table(conn_config, stream, state, desired_columns):
 
    cur = connection.cursor()
    cur.arraysize = BATCH_SIZE
-   cur.execute("ALTER SESSION SET TIME_ZONE = '00:00'")
+   cur.execute("ALTER SESSION SET TIME_ZONE = 'Pacific/Auckland'")
    cur.execute("""ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD"T"HH24:MI:SS."00+00:00"'""")
    cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD"T"HH24:MI:SSXFF"+00:00"'""")
    cur.execute("""ALTER SESSION SET NLS_TIMESTAMP_TZ_FORMAT  = 'YYYY-MM-DD"T"HH24:MI:SS.FFTZH:TZM'""")
